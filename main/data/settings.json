@@ -1,0 +1,15 @@
+{
+	"settings" : 
+	{
+		"partialQuantity" : 5,
+		"fundamental" : 440.0,
+		"sequence"	: "arithmetic",
+		"overtone"	: 1,
+		"arithmetic" : 1.0,
+		"geometric" : 1.0,
+		"partialMultiplier" : 0.49,
+		"sustain" : 5.0,
+		"expDecay" : 0.6
+
+	}
+}
