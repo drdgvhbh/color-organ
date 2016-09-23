@@ -31,7 +31,7 @@ function msg_float( frequency )
 		this.patcher.disconnect( this.box, 1, partials[i], 1);
 		this.patcher.disconnect( this.box, 0, partials[i], 0);
 
-		this.patcher.hiddenconnect( this.box, 1, partials[i], 1);
+		this.patcher.connect( this.box, 1, partials[i], 1);
 
 		//ADSR envelope preset
 		var numOfPts = parseInt( presets.kv.get( "presets::points::ar_1000" + "::numOfPts" ) );
@@ -87,7 +87,7 @@ function msg_float( frequency )
 		}
 
 		totalFreq = totalFreq + freq;
-		this.patcher.hiddenconnect( this.box, 0, partials[i], 0);
+		this.patcher.connect( this.box, 0, partials[i], 0);
 		this.outlet( 0, freq );
 		this.patcher.disconnect( this.box, 0, partials[i], 0);
 
@@ -99,7 +99,7 @@ function msg_float( frequency )
 		this.patcher.disconnect( this.box, 1, partials[i], 1);
 	}
 
-	this.patcher.hiddenconnect( this.box, 2,  this.patcher.getnamed( "live.gain~" ), 0);
+	this.patcher.connect( this.box, 2,  this.patcher.getnamed( "live.gain~" ), 0);
 	if ( totalFreq > 4000 && totalFreq < 15000 ) 
 	{
 		this.outlet( 2, -totalFreq / 2000.0 );
@@ -122,6 +122,4 @@ function msg_float( frequency )
 	}
 	this.patcher.disconnect( this.box, 2, this.patcher.getnamed( "live.gain~" ), 0);
 
-
-	
 }

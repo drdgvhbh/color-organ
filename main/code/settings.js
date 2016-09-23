@@ -38,7 +38,7 @@ function import_settings()
 	// How many partial objects should there be?
 	settings.partialQuantity = settings.kv.get( "settings::partialQuantity" ) || 1;
 	declareattribute("partialQuantity", setPartialQuantity, getPartialQuantity, 0);	
-	this.getPartialQuantity();
+	//this.getPartialQuantity();
 
 	// What is the default fundamental frequency?
 	settings.fundamental = settings.kv.get( "settings::fundamental" );

@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 42.0, 84.0, 744.0, 930.0 ],
+		"rect" : [ 34.0, 77.0, 944.0, 617.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,32 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-26",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 163.0, 180.0, 52.0, 22.0 ],
+					"style" : "",
+					"text" : "compile"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-17",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 163.0, 149.0, 135.0, 22.0 ],
+					"style" : "",
+					"text" : "qmetro 5000 @active 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontname" : "Britannic",
 					"fontsize" : 28.0,
 					"id" : "obj-40",
@@ -55,7 +81,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 42.0, 84.0, 1298.0, 930.0 ],
+						"rect" : [ 26.0, 85.0, 1298.0, 617.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -356,7 +382,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 372.833313, 73.0, 177.0, 34.0 ],
+									"patching_rect" : [ 372.833313, 73.0, 186.0, 34.0 ],
 									"style" : "",
 									"text" : "Toggle On for \"overtone series\"\nToggle Off for \"partial series\""
 								}
@@ -447,7 +473,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 184.5, 77.0, 147.0, 34.0 ],
+									"patching_rect" : [ 184.5, 77.0, 156.0, 34.0 ],
 									"style" : "",
 									"text" : "Toggle On for \"arithmetic\"\nToggle Off for \"geometric\""
 								}
@@ -844,20 +870,20 @@
 								"loop" : 1,
 								"content_state" : 								{
 									"play" : [ 0 ],
-									"formant" : [ 1.0 ],
-									"originallengthms" : [ 0.0 ],
-									"followglobaltempo" : [ 0 ],
-									"originaltempo" : [ 120.0 ],
 									"timestretch" : [ 0 ],
-									"quality" : [ "basic" ],
-									"pitchshift" : [ 1.0 ],
-									"mode" : [ "basic" ],
-									"originallength" : [ 0.0, "ticks" ],
-									"formantcorrection" : [ 0 ],
-									"speed" : [ 1.0 ],
-									"basictuning" : [ 440 ],
 									"pitchcorrection" : [ 0 ],
-									"slurtime" : [ 0.0 ]
+									"formant" : [ 1.0 ],
+									"pitchshift" : [ 1.0 ],
+									"slurtime" : [ 0.0 ],
+									"quality" : [ "basic" ],
+									"originallengthms" : [ 0.0 ],
+									"originallength" : [ 0.0, "ticks" ],
+									"followglobaltempo" : [ 0 ],
+									"formantcorrection" : [ 0 ],
+									"mode" : [ "basic" ],
+									"speed" : [ 1.0 ],
+									"originaltempo" : [ 120.0 ],
+									"basictuning" : [ 440 ]
 								}
 
 							}
@@ -1134,8 +1160,8 @@
 					"id" : "obj-21",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 10.0, 180.0, 130.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "frequency_control.js",
@@ -1213,8 +1239,8 @@
 					"id" : "obj-12",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"numoutlets" : 6,
+					"outlettype" : [ "", "", "", "", "", "" ],
 					"patching_rect" : [ 791.666687, 146.0, 76.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "settings.js",
@@ -1313,6 +1339,71 @@
 				}
 
 			}
+, 			{
+				"box" : 				{
+					"id" : "obj-3",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 10.0, 667.0, 100.0, 0.0 ],
+					"style" : "",
+					"text" : "partial 0.2",
+					"varname" : "partial_0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 135.0, 667.0, 100.0, 0.0 ],
+					"style" : "",
+					"text" : "partial 0.2",
+					"varname" : "partial_1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 260.0, 667.0, 100.0, 0.0 ],
+					"style" : "",
+					"text" : "partial 0.2",
+					"varname" : "partial_2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-14",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 385.0, 667.0, 100.0, 0.0 ],
+					"style" : "",
+					"text" : "partial 0.2",
+					"varname" : "partial_3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-15",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 510.0, 667.0, 100.0, 0.0 ],
+					"style" : "",
+					"text" : "partial 0.2",
+					"varname" : "partial_4"
+				}
+
+			}
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
@@ -1394,6 +1485,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-16", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-26", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-17", 0 ]
 				}
 
 			}
@@ -1483,6 +1583,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-21", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-26", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-8", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -1559,9 +1668,45 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "partial_test.maxpat",
-				"bootpath" : "D:/Repositories/ryan_color_organ/main/patchers",
+				"name" : "partial.maxpat",
+				"bootpath" : "~/color-organ/main/patchers",
 				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "setup.js",
+				"bootpath" : "~/color-organ/main/code",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "settings.js",
+				"bootpath" : "~/color-organ/main/code",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "util.js",
+				"bootpath" : "~/color-organ/main/code",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "frequency_control.js",
+				"bootpath" : "~/color-organ/main/code",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "partial_test.maxpat",
+				"bootpath" : "~/color-organ/main/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "Re-Zero Episode 18 Insert Song『REM (Inori Minase) - Wishing』.mp3",
+				"bootpath" : "~/color-organ/main/media",
+				"type" : "Mp3 ",
 				"implicit" : 1
 			}
  ],
