@@ -31,10 +31,10 @@ function msg_float( frequency )
 		this.patcher.disconnect( this.box, 1, partials[i], 1);
 		this.patcher.disconnect( this.box, 0, partials[i], 0);
 
-		this.patcher.connect( this.box, 1, partials[i], 1);
+		this.patcher.hiddenconnect( this.box, 1, partials[i], 1);
 
 		//ADSR envelope preset
-		var numOfPts = parseInt( presets.kv.get( "presets::points::ar_1000" + "::numOfPts" ) );
+		var numOfPts = parseInt( presets.kv.get( "presets::points::adadadadr_1000" + "::numOfPts" ) );
 
 		//Clear the existing envelope
 		this.outlet( 1, new Array( "clear" ) );
@@ -42,7 +42,7 @@ function msg_float( frequency )
 		//Setting the envelope for the function
 		for ( q = 0; q < numOfPts; q++ ) 
 		{
-			this.outlet( 1, util.getPresetPoint( "presets::points::ar_1000", q, i ) );
+			this.outlet( 1, util.getPresetPoint( "presets::points::adadadadr_1000", q, i ) );
 			//making sure the domain of the envelope is consistent with the length of the note
 			this.outlet( 1, new Array( "domain", 1000 * settings.sustain ) );
 		}
@@ -87,7 +87,7 @@ function msg_float( frequency )
 		}
 
 		totalFreq = totalFreq + freq;
-		this.patcher.connect( this.box, 0, partials[i], 0);
+		this.patcher.hiddenconnect( this.box, 0, partials[i], 0);
 		this.outlet( 0, freq );
 		this.patcher.disconnect( this.box, 0, partials[i], 0);
 
@@ -99,7 +99,7 @@ function msg_float( frequency )
 		this.patcher.disconnect( this.box, 1, partials[i], 1);
 	}
 
-	this.patcher.connect( this.box, 2,  this.patcher.getnamed( "live.gain~" ), 0);
+	this.patcher.hiddenconnect( this.box, 2,  this.patcher.getnamed( "live.gain~" ), 0);
 	if ( totalFreq > 4000 && totalFreq < 15000 ) 
 	{
 		this.outlet( 2, -totalFreq / 2000.0 );

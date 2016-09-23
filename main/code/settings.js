@@ -4,7 +4,7 @@
 
 	Here we can customize the output of our program by setting a number of keyvalues.
 */
-outlets = 6;
+outlets = 8;
 
 var settings = new Global( "settings" );
 settings.kv = new Dict( "settings" );
@@ -84,9 +84,17 @@ function import_settings()
 		How long should a note play? By default it plays over one second.
 	*/
 	settings.sustain = settings.kv.get( "settings::sustain" );
+	declareattribute("sustain", setSustain, getSustain, 0);
+	this.getSustain();
+
+
 
 	// How should much should the amplitude decay over partials? Formula: Ffundamental * ( decay ) ^ partialNumber ?
+	// lower value == faster decay
+	// higher value == slower decay
 	settings.expDecay = settings.kv.get( "settings::expDecay" );
+	declareattribute("expDecay", setExpDecay, getExpDecay, 0);
+	this.getExpDecay();
 }
 
 function get( setting, iOutlet )
@@ -191,6 +199,29 @@ function getPartialMultiplier()
 	get( settings.partialMultiplier, 5 );		
 }
 
+function setSustain( sustain )
+{
+	settings.sustain = sustain;
 
+	dictSettings.replace( "settings::sustain", settings.sustain );
 
+}
+
+function getSustain()
+{
+	get( settings.sustain, 6 );		
+}
+
+function setExpDecay( decay )
+{
+	settings.expDecay = decay;
+
+	dictSettings.replace( "settings::expDecay", settings.expDecay );
+
+}
+
+function getExpDecay()
+{
+	get( settings.expDecay, 7 );		
+}
 
