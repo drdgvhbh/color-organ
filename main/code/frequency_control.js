@@ -23,7 +23,6 @@ function msg_float( frequency )
 
 	for ( i = 0; i < partials.length; i++ ) 
 	{
-		post();
 		//partial multplier
 		var multiplier = ( 	Math.random() * ( settings.partialMultiplier - -settings.partialMultiplier ) + 
 							-settings.partialMultiplier ) + 1;
@@ -34,7 +33,7 @@ function msg_float( frequency )
 		this.patcher.hiddenconnect( this.box, 1, partials[i], 1);
 
 		//ADSR envelope preset
-		var numOfPts = parseInt( presets.kv.get( "presets::points::adadadadr_1000" + "::numOfPts" ) );
+		var numOfPts = parseInt( presets.kv.get( "presets::points::" + settings.envelope + "::numOfPts" ) );
 
 		//Clear the existing envelope
 		this.outlet( 1, new Array( "clear" ) );
@@ -42,7 +41,7 @@ function msg_float( frequency )
 		//Setting the envelope for the function
 		for ( q = 0; q < numOfPts; q++ ) 
 		{
-			this.outlet( 1, util.getPresetPoint( "presets::points::adadadadr_1000", q, i ) );
+			this.outlet( 1, util.getPresetPoint( "presets::points::" + settings.envelope , q, i ) );
 			//making sure the domain of the envelope is consistent with the length of the note
 			this.outlet( 1, new Array( "domain", 1000 * settings.sustain ) );
 		}
@@ -118,7 +117,7 @@ function msg_float( frequency )
 	}
 	else
 	{
-		this.outlet( 2, 5.0 );
+		this.outlet( 2, 0.0 );
 	}
 	this.patcher.disconnect( this.box, 2, this.patcher.getnamed( "live.gain~" ), 0);
 

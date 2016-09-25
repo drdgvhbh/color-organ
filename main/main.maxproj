@@ -2,7 +2,7 @@
 	"name" : "main",
 	"version" : 1,
 	"creationdate" : -737842528,
-	"modificationdate" : -737557633,
+	"modificationdate" : -737308793,
 	"viewrect" : [ 893.0, 212.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -21,6 +21,16 @@
 			}
 ,
 			"partial_test.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"asdf.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"main2.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}

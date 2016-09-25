@@ -4,7 +4,7 @@
 
 	Here we can customize the output of our program by setting a number of keyvalues.
 */
-outlets = 8;
+outlets = 9;
 
 var settings = new Global( "settings" );
 settings.kv = new Dict( "settings" );
@@ -95,6 +95,14 @@ function import_settings()
 	settings.expDecay = settings.kv.get( "settings::expDecay" );
 	declareattribute("expDecay", setExpDecay, getExpDecay, 0);
 	this.getExpDecay();
+
+	//Envelope Preset
+	//http://i.imgur.com/5EzuEH4.png
+	settings.envelope = settings.kv.get( "settings::envelope" );
+	declareattribute("envelope", setEnvelope, getEnvelope, 0);
+	this.getEnvelope();
+
+
 }
 
 function get( setting, iOutlet )
@@ -225,3 +233,15 @@ function getExpDecay()
 	get( settings.expDecay, 7 );		
 }
 
+function setEnvelope( sEnvelope )
+{
+	settings.envelope = sEnvelope;
+
+	dictSettings.replace( "settings::envelope", settings.envelope );
+
+}
+
+function getEnvelope()
+{
+	get( settings.envelope, 8 );		
+}

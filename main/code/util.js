@@ -57,10 +57,8 @@ function importData( sName )
 function getPresetPoint( sPresetName, iPointNumber, iPartialNumber )
 {
 	var list = new Array();
-	post (iPointNumber);
 	list[0] = presets.get( sPresetName + "::P" + iPointNumber.toString() + "::x" ) * settings.sustain; 
 	list[1] = presets.get( sPresetName + "::P" + iPointNumber.toString() + "::y" ) * Math.pow( settings.expDecay, iPartialNumber );
-	post( list[1] );
 		
 	return list;
 }
