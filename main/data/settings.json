@@ -8,7 +8,7 @@
 		"geometric" : 1,
 		"partialMultiplier" : 0.49,
 		"sustain" : 2,
-		"expDecay" : 0.6,
+		"expDecay" : 1.0,
 		"envelope" : "asr_1000"
 	}
 ,
@@ -21,7 +21,7 @@
 		"geometric" : 1,
 		"partialMultiplier" : 0.25,
 		"sustain" : 10,
-		"expDecay" : 0.4,
+		"expDecay" : 1.0,
 		"envelope" : "adaaar_1000"
 	}
 }

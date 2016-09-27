@@ -72,7 +72,7 @@ function getPresetPoint( sPresetName, iPointNumber, iPartialNumber )
 
 function createPartials()
 {
-		for ( i = 0; i < settings.partialQuantity; i++ )
+	for ( i = 0; i < settings.partialQuantity; i++ )
 	{
 		var x = keyvalues.kv.get( "keyvalues::partial::xPos" ) + i * keyvalues.kv.get( "keyvalues::partial::xOffset" );
 		var y = keyvalues.kv.get( "keyvalues::partial::yPos" ) + i * keyvalues.kv.get( "keyvalues::partial::yOffset" );
