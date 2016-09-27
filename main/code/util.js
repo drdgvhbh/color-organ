@@ -14,6 +14,13 @@ var presets = new Global( "presets" ).kv;
 var keyvalues = new Global( "keyvalues");
 keyvalues.kv = new Dict( "keyvalues" );
 
+
+// defines the preset again cuz lol max
+function definePreset()
+{
+	presets = new Global( "presets" ).kv;
+}
+
 //Removes all objects from patcher by their scripting name 
 //Prefix is part of the scripting name
 function ClearAllObjectsByScriptingName( prefix ) 
@@ -57,10 +64,8 @@ function importData( sName )
 function getPresetPoint( sPresetName, iPointNumber, iPartialNumber )
 {
 	var list = new Array();
-	post (iPointNumber);
 	list[0] = presets.get( sPresetName + "::P" + iPointNumber.toString() + "::x" ) * settings.sustain; 
 	list[1] = presets.get( sPresetName + "::P" + iPointNumber.toString() + "::y" ) * Math.pow( settings.expDecay, iPartialNumber );
-	post( list[1] );
 		
 	return list;
 }
@@ -74,7 +79,7 @@ function createPartials()
 
 		// Value to normalize the total amplitude of all partials combined to 1.0
 		var norm = new Array();
-		norm[0] = 1.0 / settings.partialQuantity;
+		norm[0] = ( 1.0 / settings.partialQuantity ) / 100 ;
 
 		var partial = this.patcher.newdefault( x, y, "partial", norm );
 		partial.varname = "partial_" + i.toString();

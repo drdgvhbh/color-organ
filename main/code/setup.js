@@ -13,6 +13,8 @@ var util = new Global( "utilities" ).util;
 var keyvalues = new Global( "keyvalues");
 keyvalues.kv = new Dict( "keyvalues" );
 
+var presets = new Global( "presets" );
+
 /* 
 	Executes when issued a bang message.
 	Runs the setup function.
@@ -28,6 +30,7 @@ function setup()
 {
 	util.importData( "keyvalues" );
 	util.importData( "presets" );
+	util.definePreset();
 
 	// tell our settings javascript to execute its methods
 	var jsSettings = this.patcher.getnamed( "settings_js" );

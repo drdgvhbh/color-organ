@@ -2,7 +2,7 @@
 	"name" : "main",
 	"version" : 1,
 	"creationdate" : -737842528,
-	"modificationdate" : -737557633,
+	"modificationdate" : -737212345,
 	"viewrect" : [ 893.0, 212.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -10,6 +10,11 @@
 	"autolocalize" : 0,
 	"contents" : 	{
 		"patchers" : 		{
+			"superMain.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"main.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
@@ -52,6 +57,11 @@
 			}
 ,
 			"frequency_control.js" : 			{
+				"kind" : "javascript",
+				"local" : 1
+			}
+,
+			"notesToColor.js" : 			{
 				"kind" : "javascript",
 				"local" : 1
 			}
