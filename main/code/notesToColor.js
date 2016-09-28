@@ -5,9 +5,10 @@
 	Gets all the sound note input and outputs something to the colour thing
 */
 inlets = 9;
-outlets = 3;
+outlets = 4;
 
-var HSL_MAXIMUM = 225;
+var MAXIMUM = 255.0;
+var MINIMUM = 0.0;
 
 //LAST TIME SINCE INPUT Variables
 var time = new Array();
@@ -23,7 +24,10 @@ var oldSaturation = 0;
 
 
 // the real saturation
-var saturation = 0;
+var saturation = 127;
+
+//the real luminosity
+var luminosity = 127;
 
 //A list that has the note as parameter 1 and the sustain as parameter 2
 function list( input )
@@ -64,7 +68,7 @@ function list( input )
 	//post( saturation + ", " + oldSaturation + "\n" );
 
 	// Add or subtract saturation
-	//outlet( 2, ( saturation - oldSaturation ) * counter );
+	outlet( 2, ( saturation - oldSaturation ) * counter );
 
 
 	oldSaturation = saturation;
@@ -76,10 +80,26 @@ function msg_float( amp )
 	if ( this.inlet != 8 )
 		return;
 
-	var saturationRatio = getSaturation() / 255;
-	var output =  -( 0.5 - Math.abs( amp ) );
-	post ( amp.toFixed(2) + ", " + output.toFixed(2) + "\n" );
-	outlet( 2, output );
+	var output = luminosity * ( 1 + ( Math.abs( amp ) - 0.5 ) / 1000 );
+	post( ( 1 + ( Math.abs( amp ) - 0.5 ) ) + "\n");
+	//post( output.toFixed(2) + "\n" );
+	if ( output > MAXIMUM ) 
+	{
+		outlet( 3, MAXIMUM );
+		this.setLuminosity( MAXIMUM );
+	}
+	else if ( output < MINIMUM )
+	{
+		this.setLuminosity( MINIMUM );
+		outlet( 3, MINIMUM );
+	}
+	else if ( Math.abs( output ) > 0.00001)
+	{
+		outlet( 3, output );
+	}
+	
+
+
 }
 
 function setSaturation( flSaturation )
@@ -90,4 +110,15 @@ function setSaturation( flSaturation )
 function getSaturation()
 {
 	return this.saturation;
+}
+
+
+function setLuminosity( flLuminosity )
+{
+	this.luminosity = flLuminosity;
+}
+
+function getLuminosity()
+{
+	return this.luminosity;
 }

@@ -2,7 +2,7 @@
 	"name" : "main",
 	"version" : 1,
 	"creationdate" : -737842528,
-	"modificationdate" : -737212345,
+	"modificationdate" : -737101240,
 	"viewrect" : [ 893.0, 212.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -26,6 +26,11 @@
 			}
 ,
 			"partial_test.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"playbackControl.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}

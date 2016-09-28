@@ -79,7 +79,7 @@ function createPartials()
 
 		// Value to normalize the total amplitude of all partials combined to 1.0
 		var norm = new Array();
-		norm[0] = ( 1.0 / settings.partialQuantity ) / 100 ;
+		norm[0] = ( 1.0 / settings.partialQuantity );
 
 		var partial = this.patcher.newdefault( x, y, "partial", norm );
 		partial.varname = "partial_" + i.toString();
