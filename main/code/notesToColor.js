@@ -80,8 +80,7 @@ function msg_float( amp )
 	if ( this.inlet != 8 )
 		return;
 
-	var output = luminosity * ( 1 + ( Math.abs( amp ) - 0.5 ) / 1000 );
-	post( ( 1 + ( Math.abs( amp ) - 0.5 ) ) + "\n");
+	var output = luminosity * ( 1 + ( Math.abs( amp ) - 0.44 ) / 10 );
 	//post( output.toFixed(2) + "\n" );
 	if ( output > MAXIMUM ) 
 	{
@@ -93,9 +92,13 @@ function msg_float( amp )
 		this.setLuminosity( MINIMUM );
 		outlet( 3, MINIMUM );
 	}
-	else if ( Math.abs( output ) > 0.00001)
+	else if ( Math.abs( output ) >= 1 )
 	{
 		outlet( 3, output );
+	}
+	else 
+	{
+		outlet( 3, 1 );
 	}
 	
 

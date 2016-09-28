@@ -9,7 +9,7 @@
 		"partialMultiplier" : 0.49,
 		"sustain" : 2,
 		"expDecay" : 0.9,
-		"envelope" : "asr_1000"
+		"envelope" : "adsr_1000"
 	}
 ,
 	"settings2" : 	{
@@ -21,8 +21,8 @@
 		"geometric" : 1,
 		"partialMultiplier" : 0.25,
 		"sustain" : 10,
-		"expDecay" : 0.6,
-		"envelope" : "adaaar_1000"
+		"expDecay" : 0.9,
+		"envelope" : "adadadadr_1000"
 	}
 }
  
