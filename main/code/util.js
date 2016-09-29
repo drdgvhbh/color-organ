@@ -5,11 +5,20 @@
 	Utility Functions
 */
 
-var utilities = new Global( "utilities" );
-var util = utilities.util = this;
+var thisSetting = 0;
 
-var settings = new Global( "settings" );
-var presets = new Global( "presets" ).kv;
+//is a pre condition essentially
+if ( jsarguments.length > 1 )
+{
+	thisSetting = jsarguments[1];
+}
+
+var settings = new Global( "settings" + thisSetting );
+
+var utilities = new Global( "utilities" + thisSetting );
+utilities.util = this;
+
+var presets = new Global( "presets" + thisSetting ).kv;
 
 var keyvalues = new Global( "keyvalues");
 keyvalues.kv = new Dict( "keyvalues" );
@@ -18,7 +27,7 @@ keyvalues.kv = new Dict( "keyvalues" );
 // defines the preset again cuz lol max
 function definePreset()
 {
-	presets = new Global( "presets" ).kv;
+	presets = new Global( "presets" + thisSetting ).kv;
 }
 
 //Removes all objects from patcher by their scripting name 
@@ -51,7 +60,7 @@ function FindAllObjectsByScriptingName( prefix )
 function importData( sName )
 {
 	//import data into a dictionary
-	var data = new Global( sName );
+	var data = new Global( sName + thisSetting );
 	data.kv = new Dict( sName );
 	data.kv.import_json( sName + ".json" );
 
@@ -84,4 +93,9 @@ function createPartials()
 		var partial = this.patcher.newdefault( x, y, "partial", norm );
 		partial.varname = "partial_" + i.toString();
 	}
+}
+
+function log10( x )
+{
+	return Math.log( x ) / Math.log ( 10 );
 }

@@ -7,9 +7,17 @@
 
 outlets = 3;
 
-var settings = new Global( "settings" );
-var util = new Global( "utilities" ).util;
-var presets = new Global( "presets" );
+var thisSetting = 0;
+
+//is a pre condition essentially
+if ( jsarguments.length > 1 )
+{
+	thisSetting = jsarguments[1];
+}
+
+var settings = new Global( "settings" + thisSetting );
+var util = new Global( "utilities" + thisSetting ).util;
+var presets = new Global( "presets" + thisSetting );
 
 /* 
 	Here we set the frequency of the cycles and change the enveloping.

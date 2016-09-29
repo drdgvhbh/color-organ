@@ -7,6 +7,16 @@
 inlets = 9;
 outlets = 4;
 
+var thisSetting = 0;
+
+//is a pre condition essentially
+if ( jsarguments.length > 1 )
+{
+	thisSetting = jsarguments[1];
+}
+
+var util = new Global( "utilities" + thisSetting ).util;
+
 var MAXIMUM = 255.0;
 var MINIMUM = 0.0;
 
@@ -28,6 +38,36 @@ var saturation = 127;
 
 //the real luminosity
 var luminosity = 127;
+
+//
+var LUMI_BASE = 95/255;
+
+function bang()
+{
+	// how many colours were actually added to the color equation and is basically how many things are playing
+	var counter = 0;
+	// the hue of the color in notes so 1 / 30th of the hue
+	var hue = 0;
+	// add up the elapsed sustain of all sounds and scale it to the saturation
+	var saturation = 0;
+
+	for ( i = 0; i < time.length; i++ )
+	{
+		if ( ( new Date().getTime() / 1000 ) - time[i] <= sustain[i] )
+		{
+			hue = hue + color[i];
+			counter = counter + 1;
+		}
+
+	}
+
+
+	hue = hue / counter;
+
+	outlet( 0, hue );
+
+
+}
 
 //A list that has the note as parameter 1 and the sustain as parameter 2
 function list( input )
@@ -79,8 +119,9 @@ function msg_float( amp )
 {
 	if ( this.inlet != 8 )
 		return;
+	var base = ( util.log10( this.luminosity/MAXIMUM ) / util.log10( LUMI_BASE ) );
 
-	var output = luminosity * ( 1 + ( Math.abs( amp ) - 0.44 ) / 10 );
+	var output = luminosity * ( base + ( Math.abs( amp ) - 0.5 ) );
 	//post( output.toFixed(2) + "\n" );
 	if ( output > MAXIMUM ) 
 	{

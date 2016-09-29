@@ -6,22 +6,24 @@
 */
 outlets = 9;
 
-var settings = new Global( "settings" );
+var thisSetting = 0;
+
+//is a pre condition essentially
+if ( jsarguments.length > 1 )
+{
+	thisSetting = jsarguments[1];
+}
+
+var settings = new Global( "settings" + thisSetting );
+
 settings.kv = new Dict( "settings" );
 
 var keyvalues = new Global( "keyvalues");
 keyvalues.kv = new Dict( "keyvalues" );
 
-var util = new Global( "utilities" ).util;
+var util = new Global( "utilities" + thisSetting ).util;
 
 var dictSettings = this.patcher.getnamed( "settings_dict" );
-
-var thisSetting = 0;
-
-if ( jsarguments.length > 1 )
-{
-	thisSetting = jsarguments[1];
-}
 
 /* 
 	Executes when issued a bang message.

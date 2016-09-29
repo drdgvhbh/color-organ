@@ -4,16 +4,23 @@
 
 	This script is used to instantiate objects and intialize settings.
 */
+var thisSetting = 0;
 
-var settings = new Global( "settings" );
+//is a pre condition essentially
+if ( jsarguments.length > 1 )
+{
+	thisSetting = jsarguments[1];
+}
+
+var settings = new Global( "settings" + thisSetting );
 settings.kv = new Dict( "settings" );
 
-var util = new Global( "utilities" ).util;
+var util = new Global( "utilities" + thisSetting ).util;
 
 var keyvalues = new Global( "keyvalues");
 keyvalues.kv = new Dict( "keyvalues" );
 
-var presets = new Global( "presets" );
+var presets = new Global( "presets" + thisSetting );
 
 /* 
 	Executes when issued a bang message.
