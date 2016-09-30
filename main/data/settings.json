@@ -1,28 +1,80 @@
 {
 	"settings1" : 	{
-		"partialQuantity" : 4,
+		"partialQuantity" : 3,
 		"fundamental" : 440.0,
-		"sequence" : "geometric",
-		"overtone" : 1,
+		"sequence" : "arithmetic",
+		"overtone" : 0,
 		"arithmetic" : 1,
 		"geometric" : 1,
-		"partialMultiplier" : 0.49,
-		"sustain" : 2,
-		"expDecay" : 0.9,
-		"envelope" : "adsr_1000"
+		"partialMultiplier" : 0.07,
+		"sustain" : 6,
+		"expDecay" : 0.8,
+		"envelope" : "hollow"
 	}
 ,
 	"settings2" : 	{
 		"partialQuantity" : 6,
 		"fundamental" : 440.0,
-		"sequence" : "arithmetic",
+		"sequence" : "geometric",
 		"overtone" : 0,
-		"arithmetic" : 1.2,
+		"arithmetic" : 1,
 		"geometric" : 1,
-		"partialMultiplier" : 0.25,
+		"partialMultiplier" : 0.05,
 		"sustain" : 10,
-		"expDecay" : 0.9,
-		"envelope" : "adadadadr_1000"
+		"expDecay" : 0.2,
+		"envelope" : "verySpiky"
+	}
+,
+	"settings3" : 	{
+		"partialQuantity" : 16,
+		"fundamental" : 440.0,
+		"sequence" : "arithmetic",
+		"overtone" : 1,
+		"arithmetic" : 1,
+		"geometric" : 1,
+		"partialMultiplier" : 0.05,
+		"sustain" : 5,
+		"expDecay" : 0.6,
+		"envelope" : "shortSoft"
+	}
+,
+	"settings4" : 	{
+		"partialQuantity" : 12,
+		"fundamental" : 440.0,
+		"sequence" : "geometric",
+		"overtone" : 0,
+		"arithmetic" : 1,
+		"geometric" : 1,
+		"partialMultiplier" : 0.49,
+		"sustain" : 8,
+		"expDecay" : 0.3,
+		"envelope" : "sharp"
+	}
+,
+	"settings5" : 	{
+		"partialQuantity" : 3,
+		"fundamental" : 440.0,
+		"sequence" : "geometric",
+		"overtone" : 0,
+		"arithmetic" : 1,
+		"geometric" : 1,
+		"partialMultiplier" : 0.24,
+		"sustain" : 1,
+		"expDecay" : 0.6,
+		"envelope" : "long"
+	}
+,
+	"settings6" : 	{
+		"partialQuantity" : 6,
+		"fundamental" : 440.0,
+		"sequence" : "arithmetic",
+		"overtone" : 1,
+		"arithmetic" : 1,
+		"geometric" : 1,
+		"partialMultiplier" : 0.24,
+		"sustain" : 1,
+		"expDecay" : 0.2,
+		"envelope" : "swift"
 	}
 }
  

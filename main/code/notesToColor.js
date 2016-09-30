@@ -5,7 +5,7 @@
 	Gets all the sound note input and outputs something to the colour thing
 */
 inlets = 9;
-outlets = 4;
+outlets = 5;
 
 var thisSetting = 0;
 
@@ -40,7 +40,7 @@ var saturation = 127;
 var luminosity = 127;
 
 //
-var LUMI_BASE = 95/255;
+var LUMI_BASE = 127/(MAXIMUM);
 
 function bang()
 {
@@ -53,18 +53,31 @@ function bang()
 
 	for ( i = 0; i < time.length; i++ )
 	{
-		if ( ( new Date().getTime() / 1000 ) - time[i] <= sustain[i] )
-		{
-			hue = hue + color[i];
-			counter = counter + 1;
+		if (i != 0) {
+			post("Main: " + i + ", " +"Max: " + ( sustain[i] / 1000 )+ ", " + "Diff: " + ( ( new Date().getTime() / 1000 ) - time[i]) + "\n" );
+			if (sustain[i] != null && time[i] != null) {
+				if ( ( new Date().getTime() / 1000 ) - time[i] <= sustain[i] / 1000)
+				{
+					hue = hue + color[i];
+					counter = counter + 1;
+				}
+			}
 		}
-
 	}
 
 
-	hue = hue / counter;
+	if (counter > 0) 
+	{
+		hue = hue / counter;
+		post( "Hue: " + hue + ", " + "Counter: " + counter + "\n");
 
-	outlet( 0, hue );
+		outlet( 0, hue );
+	}
+	else
+	{
+		outlet( 0, 0 );
+		outlet( 1, 0 );
+	}
 
 
 }
@@ -90,28 +103,54 @@ function list( input )
 
 	for ( i = 0; i < time.length; i++ )
 	{
-		if ( ( new Date().getTime() / 1000 ) - time[i] <= sustain[i] )
-		{
-			hue = hue + color[i];
-			counter = counter + 1;
-			saturation = saturation + ( ( new Date().getTime() / 1000 ) - time[i] );
+		if (i != 0) {
+			post("Main: " + i + ", " +"Max: " + ( sustain[i] / 1000 )+ ", " + "Diff: " + ( ( new Date().getTime() / 1000 ) - time[i]) + "\n" );
+			if (sustain[i] != null && time[i] != null) {
+				if ( ( new Date().getTime() / 1000 ) - time[i] <= sustain[i] / 1000)
+				{
+					hue = hue + color[i];
+					counter = counter + 1;
+					saturation = saturation + ( ( new Date().getTime() / 1000 ) - time[i] );
+				}
+			}
 		}
-
 	}
 
 
-	hue = hue / counter;
+	if (counter > 0) 
+	{
+		hue = hue / counter;
+		post( "Hue: " + hue + ", " + "Counter: " + counter + "\n");
 
-	outlet( 0, hue );
-	outlet( 1, sustain[this.inlet] );
+		outlet( 0, hue );
+		outlet( 1, sustain[this.inlet] );
+	}
+	else
+	{
+		outlet( 0, 0 );
+		outlet( 1, 0 );
+	}
+
 
 	//post( saturation + ", " + oldSaturation + "\n" );
 
+	var satOut = ( saturation - oldSaturation ) * counter;
 	// Add or subtract saturation
-	outlet( 2, ( saturation - oldSaturation ) * counter );
-
-
-	oldSaturation = saturation;
+	if ( this.getSaturation > MAXIMUM )
+	{
+		outlet( 3, MAXIMUM - this.getSaturation );
+		this.setLuminosity( MAXIMUM );
+	}
+	else if ( this.getSaturation < MINIMUM )
+	{
+		outlet( 3, MINIMUM - this.getSaturation );
+		this.setLuminosity( MINIMUM );
+	}
+	else
+	{
+		outlet( 2, ( saturation - oldSaturation ) * counter  );		
+		oldSaturation = saturation;
+	}
 
 }
 
@@ -119,27 +158,34 @@ function msg_float( amp )
 {
 	if ( this.inlet != 8 )
 		return;
-	var base = ( util.log10( this.luminosity/MAXIMUM ) / util.log10( LUMI_BASE ) );
+	if ( amp != 0)
+		{
+		var base = ( util.log10( this.luminosity/(MAXIMUM) ) / util.log10( LUMI_BASE ) );
 
-	var output = luminosity * ( base + ( Math.abs( amp ) - 0.5 ) );
-	//post( output.toFixed(2) + "\n" );
-	if ( output > MAXIMUM ) 
-	{
-		outlet( 3, MAXIMUM );
-		this.setLuminosity( MAXIMUM );
+		var output = luminosity * ( base + ( Math.abs( amp ) - 0.5 ) );
+		//post( output.toFixed(2) + "\n" );
+		if ( output > MAXIMUM ) 
+		{
+			outlet( 3, MAXIMUM );
+			this.setLuminosity( MAXIMUM );
+		}
+		else if ( output < MINIMUM )
+		{
+			this.setLuminosity( MINIMUM );
+			outlet( 3, MINIMUM );
+		}
+		else if ( Math.abs( output ) >= 1 )
+		{
+			outlet( 3, output );
+		}
+		else 
+		{
+			outlet( 3, 1 );
+		}
 	}
-	else if ( output < MINIMUM )
+	else
 	{
-		this.setLuminosity( MINIMUM );
-		outlet( 3, MINIMUM );
-	}
-	else if ( Math.abs( output ) >= 1 )
-	{
-		outlet( 3, output );
-	}
-	else 
-	{
-		outlet( 3, 1 );
+		outlet( 4, 0 );
 	}
 	
 

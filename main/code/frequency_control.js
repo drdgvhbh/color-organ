@@ -5,7 +5,7 @@
 	Receives or generate frequency and sends it to the partials
 */
 
-outlets = 3;
+outlets = 4;
 
 var thisSetting = 0;
 
@@ -25,6 +25,9 @@ var presets = new Global( "presets" + thisSetting );
 function msg_float( frequency )
 {
 	settings.fundamental = frequency;
+
+	var multiplierPush = 0;
+
 	var partials = util.FindAllObjectsByScriptingName( "partial_" );
 
 	var totalFreq = 0;
@@ -64,11 +67,13 @@ function msg_float( frequency )
 				if ( settings.overtone == 1 ) 
 				{
 					freq = settings.fundamental + settings.fundamental * i * settings.arithmetic;
+					multiplierPush = multiplierPush + multiplier;
 				}
 				else if ( settings.overtone == 0 ) 
 				{
 					
 					freq = ( settings.fundamental + settings.fundamental * i * settings.arithmetic ) * multiplier;
+					multiplierPush = multiplierPush - multiplier;
 				}
 			}
 			else
@@ -82,10 +87,12 @@ function msg_float( frequency )
 				if ( settings.overtone == 1 ) 
 				{
 					freq = settings.fundamental * Math.pow( 2, (i + 1) * settings.geometric );
+					multiplierPush = multiplierPush + multiplier;
 				}
 				else if ( settings.overtone == 0 ) 
 				{
 					freq = settings.fundamental * Math.pow( 2, (i + 1) * settings.geometric ) * multiplier;
+					multiplierPush = multiplierPush - multiplier;
 				}
 			}
 			else
@@ -108,5 +115,7 @@ function msg_float( frequency )
 
 		this.patcher.disconnect( this.box, 1, partials[i], 1);
 	}
+
+	this.outlet( 3, multiplierPush );
 
 }
