@@ -2,7 +2,7 @@
 	"name" : "main",
 	"version" : 1,
 	"creationdate" : -737842528,
-	"modificationdate" : -736886279,
+	"modificationdate" : -736870786,
 	"viewrect" : [ 850.0, 37.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -26,12 +26,12 @@
 				"local" : 1
 			}
 ,
-			"partial_test.maxpat" : 			{
+			"playbackControl.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"playbackControl.maxpat" : 			{
+			"partial_test.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -60,6 +60,16 @@
 			}
 ,
 			"notesToColor.js" : 			{
+				"kind" : "javascript",
+				"local" : 1
+			}
+,
+			"do_stuff.js" : 			{
+				"kind" : "javascript",
+				"local" : 1
+			}
+,
+			"scheduler.js" : 			{
 				"kind" : "javascript",
 				"local" : 1
 			}

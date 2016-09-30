@@ -43,7 +43,7 @@ var saturation = 127;
 var luminosity = 127;
 
 //
-var LUMI_BASE = 127/(MAXIMUM);
+var LUMI_BASE = 95.25/(MAXIMUM*2);
 
 function bang()
 {
@@ -143,7 +143,7 @@ function list( input )
 	{
 		satOut = satOut * ( 1 / ( util.log10( this.saturation/(MAXIMUM) ) / util.log10( LUMI_BASE ) ) );
 	}
-	post(satOut + "\n");
+	//post(satOut + "\n");
 	//post("Before: " + ( ( saturation - oldSaturation ) * counter) + ", After: " + satOut +"\n");
 
 	// Add or subtract saturation
