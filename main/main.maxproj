@@ -2,17 +2,18 @@
 	"name" : "main",
 	"version" : 1,
 	"creationdate" : -737842528,
-	"modificationdate" : -737101240,
-	"viewrect" : [ 893.0, 212.0, 300.0, 500.0 ],
+	"modificationdate" : -736886279,
+	"viewrect" : [ 850.0, 37.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
-	"autolocalize" : 0,
+	"autolocalize" : 1,
 	"contents" : 	{
 		"patchers" : 		{
 			"superMain.maxpat" : 			{
 				"kind" : "patcher",
-				"local" : 1
+				"local" : 1,
+				"toplevel" : 1
 			}
 ,
 			"main.maxpat" : 			{
@@ -32,14 +33,6 @@
 ,
 			"playbackControl.maxpat" : 			{
 				"kind" : "patcher",
-				"local" : 1
-			}
-
-		}
-,
-		"media" : 		{
-			"Re-Zero Episode 18 Insert Song『REM (Inori Minase) - Wishing』.mp3" : 			{
-				"kind" : "audiofile",
 				"local" : 1
 			}
 
@@ -79,12 +72,12 @@
 				"local" : 1
 			}
 ,
-			"settings.json" : 			{
+			"presets.json" : 			{
 				"kind" : "json",
 				"local" : 1
 			}
 ,
-			"presets.json" : 			{
+			"settings.json" : 			{
 				"kind" : "json",
 				"local" : 1
 			}

@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 26.0, 84.0, 1852.0, 930.0 ],
+		"rect" : [ 42.0, 85.0, 832.0, 617.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -1260,86 +1260,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-45",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 940.5, 585.5, 100.0, 22.0 ],
-					"style" : "",
-					"text" : "send~ freq",
-					"varname" : "send~_0"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-46",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 940.5, 617.5, 100.0, 22.0 ],
-					"style" : "",
-					"text" : "send~ analysis",
-					"varname" : "send~_1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"clipheight" : 91.0,
-					"data" : 					{
-						"clips" : [ 							{
-								"filename" : "Re-Zero Episode 18 Insert Song『REM (Inori Minase) - Wishing』.mp3",
-								"filekind" : "audiofile",
-								"selection" : [ 0.0, 1.0 ],
-								"loop" : 1,
-								"content_state" : 								{
-									"followglobaltempo" : [ 0 ],
-									"slurtime" : [ 0.0 ],
-									"formant" : [ 1.0 ],
-									"timestretch" : [ 0 ],
-									"pitchcorrection" : [ 0 ],
-									"originallengthms" : [ 0.0 ],
-									"speed" : [ 1.0 ],
-									"mode" : [ "basic" ],
-									"originallength" : [ 0.0, "ticks" ],
-									"quality" : [ "basic" ],
-									"basictuning" : [ 440 ],
-									"formantcorrection" : [ 0 ],
-									"pitchshift" : [ 1.0 ],
-									"originaltempo" : [ 120.0 ],
-									"play" : [ 0 ]
-								}
-
-							}
- ]
-					}
-,
-					"id" : "obj-44",
-					"maxclass" : "playlist~",
-					"numinlets" : 1,
-					"numoutlets" : 5,
-					"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
-					"patching_rect" : [ 940.5, 465.333344, 150.0, 92.0 ],
-					"style" : ""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-290",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 949.0, 432.0, 96.0, 22.0 ],
-					"style" : "",
-					"text" : "partial_test 0.25",
-					"varname" : "test_partial"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-23",
 					"maxclass" : "dict.view",
 					"numinlets" : 1,
@@ -1512,7 +1432,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 703.0, 210.0, 68.0, 36.0 ],
+					"patching_rect" : [ 703.0, 192.0, 68.0, 36.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "setup.js",
 						"parameter_enable" : 0
@@ -1531,7 +1451,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "bang" ],
-					"patching_rect" : [ 703.0, 174.0, 34.0, 22.0 ],
+					"patching_rect" : [ 703.0, 149.0, 34.0, 22.0 ],
 					"style" : "",
 					"text" : "t b b"
 				}
@@ -1544,7 +1464,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 703.0, 146.0, 60.0, 22.0 ],
+					"patching_rect" : [ 703.0, 121.0, 60.0, 22.0 ],
 					"style" : "",
 					"text" : "loadbang"
 				}
@@ -1567,7 +1487,7 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-1",
+					"id" : "obj-83",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 0,
@@ -1580,7 +1500,7 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-9",
+					"id" : "obj-84",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 0,
@@ -1593,7 +1513,7 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-13",
+					"id" : "obj-85",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 0,
@@ -1606,7 +1526,7 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-14",
+					"id" : "obj-86",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 0,
@@ -1619,7 +1539,7 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-17",
+					"id" : "obj-87",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 0,
@@ -1632,7 +1552,7 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-19",
+					"id" : "obj-88",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 0,
@@ -1668,7 +1588,7 @@
 					"destination" : [ "obj-21", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 785.5, 205.0, 690.0, 205.0, 690.0, 288.0, 45.0, 288.0, 45.0, 285.0, 19.5, 285.0 ],
+					"midpoints" : [ 785.5, 231.0, 690.0, 231.0, 690.0, 288.0, 45.0, 288.0, 45.0, 285.0, 19.5, 285.0 ],
 					"source" : [ "obj-11", 0 ]
 				}
 
@@ -1687,6 +1607,7 @@
 					"destination" : [ "obj-7", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
+					"midpoints" : [ 785.5, 192.0, 771.0, 192.0, 771.0, 189.0, 712.5, 189.0 ],
 					"source" : [ "obj-11", 0 ]
 				}
 
@@ -1824,7 +1745,7 @@
 					"destination" : [ "obj-26", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 712.5, 169.0, 690.0, 169.0, 690.0, 259.0, 157.5, 259.0 ],
+					"midpoints" : [ 712.5, 144.0, 684.0, 144.0, 684.0, 252.0, 201.0, 252.0, 201.0, 243.0, 157.5, 243.0 ],
 					"source" : [ "obj-4", 0 ]
 				}
 
@@ -1835,33 +1756,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-4", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-45", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-44", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-45", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-44", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-46", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-44", 1 ]
 				}
 
 			}
