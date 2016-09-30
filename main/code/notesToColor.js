@@ -29,6 +29,9 @@ var sustain = new Array();
 // Color 
 var color = new Array();
 
+//Saturation change from freuqnecy 
+var sat = new Array();
+
 // the previous saturation 
 var oldSaturation = 0;
 
@@ -54,7 +57,7 @@ function bang()
 	for ( i = 0; i < time.length; i++ )
 	{
 		if (i != 0) {
-			post("Main: " + i + ", " +"Max: " + ( sustain[i] / 1000 )+ ", " + "Diff: " + ( ( new Date().getTime() / 1000 ) - time[i]) + "\n" );
+			//post("Main: " + i + ", " +"Max: " + ( sustain[i] / 1000 )+ ", " + "Diff: " + ( ( new Date().getTime() / 1000 ) - time[i]) + "\n" );
 			if (sustain[i] != null && time[i] != null) {
 				if ( ( new Date().getTime() / 1000 ) - time[i] <= sustain[i] / 1000)
 				{
@@ -69,7 +72,7 @@ function bang()
 	if (counter > 0) 
 	{
 		hue = hue / counter;
-		post( "Hue: " + hue + ", " + "Counter: " + counter + "\n");
+		//post( "Hue: " + hue + ", " + "Counter: " + counter + "\n");
 
 		outlet( 0, hue );
 	}
@@ -93,6 +96,7 @@ function list( input )
 	time[this.inlet] = new Date().getTime() / 1000;
 	color[this.inlet] = input[0];
 	sustain[this.inlet] = input[1];
+	sat[this.inlet] = input[2];
 
 	// how many colours were actually added to the color equation and is basically how many things are playing
 	var counter = 0;
@@ -104,7 +108,7 @@ function list( input )
 	for ( i = 0; i < time.length; i++ )
 	{
 		if (i != 0) {
-			post("Main: " + i + ", " +"Max: " + ( sustain[i] / 1000 )+ ", " + "Diff: " + ( ( new Date().getTime() / 1000 ) - time[i]) + "\n" );
+			//post("Main: " + i + ", " +"Max: " + ( sustain[i] / 1000 )+ ", " + "Diff: " + ( ( new Date().getTime() / 1000 ) - time[i]) + "\n" );
 			if (sustain[i] != null && time[i] != null) {
 				if ( ( new Date().getTime() / 1000 ) - time[i] <= sustain[i] / 1000)
 				{
@@ -120,7 +124,7 @@ function list( input )
 	if (counter > 0) 
 	{
 		hue = hue / counter;
-		post( "Hue: " + hue + ", " + "Counter: " + counter + "\n");
+		//post( "Hue: " + hue + ", " + "Counter: " + counter + "\n");
 
 		outlet( 0, hue );
 		outlet( 1, sustain[this.inlet] );
@@ -133,22 +137,31 @@ function list( input )
 
 
 	//post( saturation + ", " + oldSaturation + "\n" );
-
-	var satOut = ( saturation - oldSaturation ) * counter;
-	// Add or subtract saturation
-	if ( this.getSaturation > MAXIMUM )
+	//var satOut = ( ( saturation - oldSaturation ) * counter) + ( sat[this.inlet] );
+	var satOut = sat[this.inlet];
+	if (satOut < 0)
 	{
-		outlet( 3, MAXIMUM - this.getSaturation );
-		this.setLuminosity( MAXIMUM );
+		satOut = satOut * ( 1 / ( util.log10( this.saturation/(MAXIMUM) ) / util.log10( LUMI_BASE ) ) );
 	}
-	else if ( this.getSaturation < MINIMUM )
+	post(satOut + "\n");
+	//post("Before: " + ( ( saturation - oldSaturation ) * counter) + ", After: " + satOut +"\n");
+
+	// Add or subtract saturation
+	if ( this.getSaturation() > MAXIMUM )
 	{
-		outlet( 3, MINIMUM - this.getSaturation );
-		this.setLuminosity( MINIMUM );
+		
+		outlet( 2, ( MAXIMUM - this.getSaturation() ) );
+		//post( "Change: " + (MAXIMUM - this.getSaturation()) + "\n" );
+		//this.setSaturation( MAXIMUM );
+	}
+	else if ( this.getSaturation() < MINIMUM )
+	{
+		outlet( 2, ( MINIMUM - this.getSaturation() ) );
+		//this.setSaturation( MINIMUM );
 	}
 	else
 	{
-		outlet( 2, ( saturation - oldSaturation ) * counter  );		
+		outlet( 2, ( ( saturation - oldSaturation ) * counter) + satOut );		
 		oldSaturation = saturation;
 	}
 
