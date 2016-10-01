@@ -67,7 +67,7 @@ function msg_float( frequency )
 				if ( settings.overtone == 1 ) 
 				{
 					freq = settings.fundamental + settings.fundamental * i * settings.arithmetic;
-					multiplierPush = multiplierPush + 0.25;
+					multiplierPush = multiplierPush + 0.3;
 				}
 				else if ( settings.overtone == 0 ) 
 				{
@@ -87,7 +87,7 @@ function msg_float( frequency )
 				if ( settings.overtone == 1 ) 
 				{
 					freq = settings.fundamental * Math.pow( 2, (i + 1) * settings.geometric );
-					multiplierPush = multiplierPush + 0.25;
+					multiplierPush = multiplierPush + 0.3;
 				}
 				else if ( settings.overtone == 0 ) 
 				{

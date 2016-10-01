@@ -45,7 +45,7 @@ var luminosity = 127;
 //
 var LUMI_BASE = 95.25/(MAXIMUM*2);
 
-var SAT_BASE = 127/(MAXIMUM*2);
+var SAT_BASE = 127/(MAXIMUM*1.5);
 
 function bang()
 {
