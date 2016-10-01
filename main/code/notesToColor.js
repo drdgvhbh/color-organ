@@ -45,6 +45,8 @@ var luminosity = 127;
 //
 var LUMI_BASE = 95.25/(MAXIMUM*2);
 
+var SAT_BASE = 127/(MAXIMUM*2);
+
 function bang()
 {
 	// how many colours were actually added to the color equation and is basically how many things are playing
@@ -141,7 +143,7 @@ function list( input )
 	var satOut = sat[this.inlet];
 	if (satOut < 0)
 	{
-		satOut = satOut * ( 1 / ( util.log10( this.saturation/(MAXIMUM) ) / util.log10( LUMI_BASE ) ) );
+		satOut = satOut * ( 1 / ( util.log10( this.saturation/(MAXIMUM) ) / util.log10( SAT_BASE ) ) );
 	}
 	//post(satOut + "\n");
 	//post("Before: " + ( ( saturation - oldSaturation ) * counter) + ", After: " + satOut +"\n");
